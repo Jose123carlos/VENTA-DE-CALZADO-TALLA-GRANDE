@@ -83,7 +83,3 @@ contenedorSeleccion.appendChild(item);
 
 // Mostrar todos al cargar
 mostrarProductos(productos);
-
-
-
-
