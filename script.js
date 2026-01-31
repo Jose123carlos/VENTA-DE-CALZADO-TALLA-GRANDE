@@ -9,7 +9,7 @@ imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
 id: 2,
 nombre: "Zapatos Casual Urban",
 categoria: "casuales",
-imagen: "https://github.com/Jose123carlos/image/calzado1.jpeg"
+imagen: "https://cdn.stocksnap.io/img-thumbs/960w/sneakers-shoes_U20YIXFQBC.jpg"
 },
 {
 id: 3,
@@ -83,4 +83,5 @@ contenedorSeleccion.appendChild(item);
 
 // Mostrar todos al cargar
 mostrarProductos(productos);
+
 
