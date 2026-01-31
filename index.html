@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda de Calzado</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<header>
+<h1>Tienda de Calzado</h1>
+<p>Elige tu estilo favorito</p>
+</header>
+
+
+<nav>
+<button onclick="filtrarCategoria('todos')">Todos</button>
+<button onclick="filtrarCategoria('deportivos')">Deportivos</button>
+<button onclick="filtrarCategoria('casuales')">Casuales</button>
+<button onclick="filtrarCategoria('formales')">Formales</button>
+</nav>
+
+
+<main id="productos" class="grid-productos">
+<!-- Productos generados por JS -->
+</main>
+
+
+<section class="carrito">
+<h2>Selección del Cliente</h2>
+<div id="seleccion"></div>
+</section>
+
+
+<script src="script.js"></script>
+</body>
+</html>
