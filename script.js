@@ -1,43 +1,35 @@
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
 
- function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  
-  const data = JSON.parse(e.postData.contents);
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  sheet.appendRow([
-    new Date(),
-    data.nombre,
-    data.whatsapp,
-    data.ciudad
-  ]);
+    const data = {
+      nombre: document.getElementById("nombre").value.trim(),
+      whatsapp: document.getElementById("whatsapp").value.trim(),
+      ciudad: document.getElementById("ciudad").value.trim()
+    };
 
-  return ContentService
-    .createTextOutput("OK")
-    .setMimeType(ContentService.MimeType.TEXT);
-}
-
-
-  fetch("https://script.google.com/macros/s/AKfycbxhruRwCaidfCR8qVxi1Agm6Bk4eQyu4Qpgyh7fkxH6Zgr5Vo_XydeX6Sf-7fiq-prwwQ/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.text())
-  .then(res => {
-    if (res === "OK") {
-      alert("¡Gracias! Tu pedido ha sido registrado.");
-      document.getElementById("contactForm").reset();
-    } else {
-      throw new Error("Respuesta inesperada del servidor");
-    }
-  })
-  .catch(err => {
-    alert("Hubo un error al enviar el formulario.");
-    console.error("Error:", err);
+    fetch("https://script.google.com/macros/s/AKfycbxhruRwCaidfCR8qVxi1Agm6Bk4eQyu4Qpgyh7fkxH6Zgr5Vo_XydeX6Sf-7fiq-prwwQ/exec", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(result => {
+      if (result === "OK") {
+        alert("¡Gracias! Tu información fue enviada correctamente.");
+        form.reset();
+      } else {
+        throw new Error("Respuesta inesperada del servidor: " + result);
+      }
+    })
+    .catch(error => {
+      console.error("Error al enviar:", error);
+      alert("Hubo un problema al enviar el formulario. Intenta nuevamente.");
+    });
   });
 });
-
