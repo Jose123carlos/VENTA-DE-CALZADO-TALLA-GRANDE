@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tienda de Calzado</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calzado Talla Grande</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <h1>CALZADO TALLA GRANDE</h1>
+    <p>Distribuidores autorizados en Cúcuta, Norte de Santander</p>
+  </header>
 
+  <main>
+    <section class="landscape">
+      <div class="modelo">
+        <img src="https://github.com/Jose123carlos/image/raw/main/calzado2.jpg" alt="Modelo 3088" />
+        <h2>MODELO 1</h2>
+        <p>100% Cuero</p>
+        <p>Ref: 3088</p>
+        <p class="precio">PRECIO: $250.000</p>
+      </div>
 
-<header>
-<h1>Tienda de Calzado</h1>
-<p>Elige tu estilo favorito</p>
-</header>
+      <div class="modelo">
+        <img src="https://jose123carlos.github.io/VENTA-DE-CALZADO-TALLA-GRANDE/assets/3086.jpg" alt="Modelo 3086" />
+        <h2>MODELO 2</h2>
+        <p>100% Cuero</p>
+        <p>Ref: 3086</p>
+        <p class="precio">PRECIO: $240.000</p>
+      </div>
 
+      <div class="modelo">
+        <img src="https://jose123carlos.github.io/VENTA-DE-CALZADO-TALLA-GRANDE/assets/3078.jpg" alt="Modelo 3-078" />
+        <h2>MODELO 3</h2>
+        <p>100% puro Cuero</p>
+        <p>Ref: 3-078</p>
+        <p class="precio">PRECIO: $260.000</p>
+      </div>
+    </section>
 
-<nav>
-<button onclick="filtrarCategoria('todos')">Todos</button>
-<button onclick="filtrarCategoria('deportivos')">Deportivos</button>
-<button onclick="filtrarCategoria('casuales')">Casuales</button>
-<button onclick="filtrarCategoria('formales')">Formales</button>
-</nav>
+    <section class="formulario">
+      <h3>¿Te interesa alguno de nuestros productos?</h3>
+      <form id="contactForm">
+        <label for="nombre">NOMBRE:</label>
+        <input type="text" id="nombre" name="nombre" required />
 
+        <label for="whatsapp">WHATSAPP:</label>
+        <input type="text" id="whatsapp" name="whatsapp" required />
 
-<main id="productos" class="grid-productos">
-<!-- Productos generados por JS -->
-</main>
+        <label for="ciudad">CIUDAD:</label>
+        <input type="text" id="ciudad" name="ciudad" required />
 
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
 
-<section class="carrito">
-<h2>Selección del Cliente</h2>
-<div id="seleccion"></div>
-</section>
+  <footer>
+    <p>&copy; 2026 Calzado Talla Grande - Todos los derechos reservados</p>
+  </footer>
 
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
