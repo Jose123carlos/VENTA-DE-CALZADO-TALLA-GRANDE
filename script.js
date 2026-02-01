@@ -9,25 +9,23 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("whatsapp", document.getElementById("whatsapp").value.trim());
     formData.append("ciudad", document.getElementById("ciudad").value.trim());
 
-    fetch("https://script.google.com/macros/s/AKfycbyyvzSTEb3T_hgBI4QZLRe8vFav17rtGI6ghH1HQhXp8Blbar64zQ67FAQNem8RFkHlag/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzybNlHYfqTUXPSuDze_f6OcQN8wBz1fDua4To2q3YKQAnCXWuhVJqZIqaQVH_z4StehQ/exec", {
       method: "POST",
-      body: formData   // 👈 ya NO enviamos JSON
+      body: formData
     })
-    .then(response => response.text())
-    .then(result => {
-      if (result === "OK") {
+    .then(res => res.text())
+    .then(text => {
+      console.log("Respuesta servidor:", text);
+      if (text === "OK") {
         alert("¡Gracias! Tu información fue enviada correctamente.");
         form.reset();
       } else {
-        alert("El formulario se envió, pero hubo una respuesta inesperada.");
-        console.log("Respuesta:", result);
+        alert("El servidor respondió, pero con un mensaje inesperado.");
       }
     })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("No se pudo enviar el formulario. Revisa tu conexión o el script.");
+    .catch(err => {
+      console.error("Error real:", err);
+      alert("No se pudo enviar el formulario.");
     });
   });
 });
-
-
