@@ -1,11 +1,23 @@
 document.getElementById("contactForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const data = {
-    nombre: document.getElementById("nombre").value,
-    whatsapp: document.getElementById("whatsapp").value,
-    ciudad: document.getElementById("ciudad").value
-  };
+ function doPost(e) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  
+  const data = JSON.parse(e.postData.contents);
+
+  sheet.appendRow([
+    new Date(),
+    data.nombre,
+    data.whatsapp,
+    data.ciudad
+  ]);
+
+  return ContentService
+    .createTextOutput("OK")
+    .setMimeType(ContentService.MimeType.TEXT);
+}
+
 
   fetch("https://script.google.com/macros/s/AKfycbxhruRwCaidfCR8qVxi1Agm6Bk4eQyu4Qpgyh7fkxH6Zgr5Vo_XydeX6Sf-7fiq-prwwQ/exec", {
     method: "POST",
@@ -28,3 +40,4 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     console.error("Error:", err);
   });
 });
+
