@@ -1,26 +1,54 @@
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
 
-  const data = {
-    nombre: document.getElementById("nombre").value,
-    whatsapp: document.getElementById("whatsapp").value,
-    ciudad: document.getElementById("ciudad").value
-  };
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  fetch("https://script.google.com/macros/s/AKfycbyOctbxpJzA3UM1dZ2Uy4azedDrl7bFteVMOGNsvg7gV9TOvBOHP6AUvrGATbqpVGqGZA/exec", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
+    // Capturar datos del formulario
+    const nombre = document.getElementById("nombre").value.trim();
+    const whatsapp = document.getElementById("whatsapp").value.trim();
+    const ciudad = document.getElementById("ciudad").value.trim();
+
+    // Validación básica
+    if (!nombre || !whatsapp || !ciudad) {
+      alert("Por favor completa todos los campos.");
+      return;
     }
-  })
-    .then(response => response.text())
-    .then(result => {
-      alert("¡Gracias! Tu pedido ha sido registrado.");
-      document.getElementById("contactForm").reset();
+
+    if (!/^\d{10}$/.test(whatsapp)) {
+      alert("El número de WhatsApp debe tener 10 dígitos.");
+      return;
+    }
+
+    const data = {
+      nombre: nombre,
+      whatsapp: whatsapp,
+      ciudad: ciudad
+    };
+
+    // URL de tu webhook de Google Apps Script
+    const webhookURL = "https://script.google.com/macros/s/AKfycbxTuWebhookURL/exec"; // ← reemplaza con tu URL real
+
+    // Enviar datos al webhook
+    fetch(webhookURL, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
-    .catch(error => {
-      alert("Hubo un error al enviar el formulario.");
-      console.error(error);
-    });
+      .then(response => response.text())
+      .then(result => {
+        if (result === "OK") {
+          alert("¡Gracias! Tu pedido ha sido registrado.");
+          form.reset();
+        } else {
+          throw new Error("Respuesta inesperada del servidor.");
+        }
+      })
+      .catch(error => {
+        console.error("Error al enviar:", error);
+        alert("Hubo un error al enviar el formulario.");
+      });
+  });
 });
