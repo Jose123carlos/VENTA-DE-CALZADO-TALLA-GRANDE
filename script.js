@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     formData.append("whatsapp", document.getElementById("whatsapp").value.trim());
     formData.append("ciudad", document.getElementById("ciudad").value.trim());
 
-    fetch("https://script.google.com/macros/s/AKfycbz0ZcrdQjT9fT-24fLyQb5wYj61l4VeYoLn24sl8L3qxa_EeY81Sidj3tztVXKdvpwyWw/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyyvzSTEb3T_hgBI4QZLRe8vFav17rtGI6ghH1HQhXp8Blbar64zQ67FAQNem8RFkHlag/exec", {
       method: "POST",
       body: formData   // 👈 ya NO enviamos JSON
     })
@@ -29,4 +29,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 
