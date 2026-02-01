@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     // URL de tu webhook de Google Apps Script
-    const webhookURL = "https://script.google.com/macros/s/AKfycbxTuWebhookURL/exec"; // ← reemplaza con tu URL real
+    const webhookURL = "https://script.google.com/macros/s/AKfycbyOctbxpJzA3UM1dZ2Uy4azedDrl7bFteVMOGNsvg7gV9TOvBOHP6AUvrGATbqpVGqGZA/exec"; // ← reemplaza con tu URL real
 
     // Enviar datos al webhook
     fetch(webhookURL, {
@@ -52,3 +52,4 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 });
+
