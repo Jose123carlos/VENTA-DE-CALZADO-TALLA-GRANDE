@@ -4,19 +4,14 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const data = {
-      nombre: document.getElementById("nombre").value.trim(),
-      whatsapp: document.getElementById("whatsapp").value.trim(),
-      ciudad: document.getElementById("ciudad").value.trim()
-    };
+    const formData = new URLSearchParams();
+    formData.append("nombre", document.getElementById("nombre").value.trim());
+    formData.append("whatsapp", document.getElementById("whatsapp").value.trim());
+    formData.append("ciudad", document.getElementById("ciudad").value.trim());
 
     fetch("https://script.google.com/macros/s/AKfycbxhruRwCaidfCR8qVxi1Agm6Bk4eQyu4Qpgyh7fkxH6Zgr5Vo_XydeX6Sf-7fiq-prwwQ/exec", {
       method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
+      body: formData   // 👈 ya NO enviamos JSON
     })
     .then(response => response.text())
     .then(result => {
@@ -24,12 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("¡Gracias! Tu información fue enviada correctamente.");
         form.reset();
       } else {
-        throw new Error("Respuesta inesperada del servidor: " + result);
+        alert("El formulario se envió, pero hubo una respuesta inesperada.");
+        console.log("Respuesta:", result);
       }
     })
     .catch(error => {
-      console.error("Error al enviar:", error);
-      alert("Hubo un problema al enviar el formulario. Intenta nuevamente.");
+      console.error("Error:", error);
+      alert("No se pudo enviar el formulario. Revisa tu conexión o el script.");
     });
   });
 });
