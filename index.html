@@ -1,64 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Venta de Calzado Talla Grande</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-      color: #333;
-    }
-    header {
-      background: #007bff;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      padding: 20px;
-      text-align: center;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      height: 600px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-    button {
-      padding: 12px 24px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calzado Talla Grande</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>👟 Venta de Calzado Talla Grande</h1>
-    <p>Encuentra tu talla perfecta con nuestro asistente</p>
+    <h1>CALZADO TALLA GRANDE</h1>
+    <p>Distribuidores autorizados en Cúcuta, Norte de Santander</p>
   </header>
 
   <main>
-    <h2>Asistente Virtual</h2>
-    <!-- Incrustar el Space de Hugging Face -->
-    <iframe src="https://huggingface.co/spaces/lsepulveda/ventas"></iframe>
+    <!-- Catálogo de productos -->
+    <section class="landscape">
+      <div class="modelo">
+        <img src="https://github.com/Jose123carlos/image/raw/main/calzado2.jpg" alt="Modelo 3088" />
+        <h2>MODELO 1</h2>
+        <p>100% Cuero</p>
+        <p>Ref: 3088</p>
+        <p class="precio">PRECIO: $250.000</p>
+      </div>
 
-    <!-- Botón alternativo para abrir en nueva pestaña -->
-    <a href="https://huggingface.co/spaces/lsepulveda/ventas" target="_blank">
-      <button>💬 Abrir asistente en otra ventana</button>
-    </a>
+      <div class="modelo">
+        <img src="https://jose123carlos.github.io/VENTA-DE-CALZADO-TALLA-GRANDE/assets/3086.jpg" alt="Modelo 3086" />
+        <h2>MODELO 2</h2>
+        <p>100% Cuero</p>
+        <p>Ref: 3086</p>
+        <p class="precio">PRECIO: $240.000</p>
+      </div>
+
+      <div class="modelo">
+        <img src="https://jose123carlos.github.io/VENTA-DE-CALZADO-TALLA-GRANDE/assets/3078.jpg" alt="Modelo 3-078" />
+        <h2>MODELO 3</h2>
+        <p>100% puro Cuero</p>
+        <p>Ref: 3-078</p>
+        <p class="precio">PRECIO: $260.000</p>
+      </div>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section class="formulario">
+      <h3>¿Te interesa alguno de nuestros productos?</h3>
+      <form id="contactForm">
+        <label for="nombre">NOMBRE:</label>
+        <input type="text" id="nombre" name="nombre" required />
+
+        <label for="whatsapp">WHATSAPP:</label>
+        <input type="text" id="whatsapp" name="whatsapp" required />
+
+        <label for="ciudad">CIUDAD:</label>
+        <input type="text" id="ciudad" name="ciudad" required />
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <!-- Asistente virtual -->
+    <section class="chatbot">
+      <h3>Habla con nuestro asistente virtual</h3>
+      <p>Haz clic en el botón para abrir el asistente en una nueva pestaña:</p>
+      <a href="https://lsepulveda-asistente-calzado.hf.space" target="_blank" class="btn-chat">
+        👉 Abrir asistente de calzado
+      </a>
+    </section>
   </main>
+
+  <footer>
+    <p>&copy; 2026 Calzado Talla Grande - Todos los derechos reservados</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
